@@ -1,13 +1,13 @@
-from django import urls
-from django.conf.urls import url
 from django.urls import path
-from django.urls.conf import include
-from .import views
+from . import views
+
 
 app_name = "users"
-
 urlpatterns = [
-    path('', include('main.urls', namespace="main"))
-    path('', include('users.urls', namespace="users"))
-    path('admin/', admin.site.urls)
-]
+	
+	path('', views.AccountView.as_view(), name="account"),
+	path('profile', views.profile_view, name="profile"),
+	path('sign-up', views.SignUpView.as_view(), name="sign-up"),
+	path('sign-in', views.SignInView.as_view(), name="sign-in"),
+	path('sign-out', views.sign_out, name="sign-out"),
+	]
